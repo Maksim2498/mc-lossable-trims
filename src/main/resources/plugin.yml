@@ -1,0 +1,7 @@
+name: LossableTrims
+version: "${project.version}"
+description: Enchant armor trims with Curse of Vanishing to make them unduplicatable
+author: maksim2498
+
+main: space.moontalk.mc.lossabletrims.LossableTrims
+api-version: 1.20
