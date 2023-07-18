@@ -4,4 +4,4 @@ description: Enchant armor trims with Curse of Vanishing to make them unduplicat
 author: maksim2498
 
 main: space.moontalk.mc.lossabletrims.LossableTrims
-api-version: 1.20
+api-version: "1.20"
