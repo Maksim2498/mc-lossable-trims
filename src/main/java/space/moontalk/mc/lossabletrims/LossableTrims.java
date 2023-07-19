@@ -4,13 +4,41 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import org.jetbrains.annotations.NotNull;
 
 public class LossableTrims extends    JavaPlugin
                            implements Listener {
+    @EventHandler
+    public void onPrepareAnvil(@NotNull PrepareAnvilEvent event) {
+        final var inventory = event.getInventory();
+        final var first     = inventory.getFirstItem();
+
+        if (first == null || !isTemplate(first.getType()))
+            return;
+
+        final var second = inventory.getSecondItem();
+
+        if (second == null || second.getType() != Material.ENCHANTED_BOOK)
+            return;
+
+        final var meta = (EnchantmentStorageMeta) second.getItemMeta();
+
+        if (!meta.hasStoredEnchant(Enchantment.VANISHING_CURSE))
+            return;
+
+        final var result = first.clone();
+
+        result.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
+        inventory.setRepairCost(4);
+        
+        event.setResult(result);
+    }
+
     @EventHandler
     public void onPrepareItemCraft(@NotNull PrepareItemCraftEvent event) {
         final var recipe = event.getRecipe();
@@ -20,17 +48,17 @@ public class LossableTrims extends    JavaPlugin
 
         final var result = recipe.getResult();
 
-        if (!isArmorTrim(result.getType()))
+        if (!isTemplate(result.getType()))
             return;
 
         final var inventory = event.getInventory();
 
         for (final var item : inventory)
-            if (isArmorTrim(item.getType()) && item.containsEnchantment(Enchantment.VANISHING_CURSE))
+            if (isTemplate(item.getType()) && item.containsEnchantment(Enchantment.VANISHING_CURSE))
                 inventory.setResult(null);
     }
 
-    private static boolean isArmorTrim(@NotNull Material matrial) {
+    private static boolean isTemplate(@NotNull Material matrial) {
         return switch (matrial) {
             case COAST_ARMOR_TRIM_SMITHING_TEMPLATE,
                  DUNE_ARMOR_TRIM_SMITHING_TEMPLATE,
