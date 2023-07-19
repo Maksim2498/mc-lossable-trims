@@ -47,7 +47,8 @@ public class LossableTrims extends    JavaPlugin
                  VEX_ARMOR_TRIM_SMITHING_TEMPLATE,
                  WARD_ARMOR_TRIM_SMITHING_TEMPLATE,
                  WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE,
-                 WILD_ARMOR_TRIM_SMITHING_TEMPLATE -> true;
+                 WILD_ARMOR_TRIM_SMITHING_TEMPLATE,
+                 NETHERITE_UPGRADE_SMITHING_TEMPLATE -> true;
 
             default -> false;
         };

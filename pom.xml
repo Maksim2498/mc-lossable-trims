@@ -4,7 +4,7 @@
 
     <groupId>space.moontalk.mc</groupId>
     <artifactId>lossable-trims</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <name>Skyfallen</name>
     <description>Minecraft plugin removing ability to duplicate armor trims with Curse of Vanishing</description>
