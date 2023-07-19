@@ -13,7 +13,7 @@
 This is a PaperMC Minecraft plugin removing ability to duplicate smithing templates with Curse of Vanishing
 and also adding ability to enchant those with this enchantment using anvil.
 
-___This plugin supports 1.20+ servers only!__
+***This plugin supports 1.20+ servers only!***
 
 ## Building
 
