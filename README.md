@@ -19,7 +19,7 @@ and also adding ability to enchant those with this enchantment using anvil.
 
 For building a plugin you first nead to have a [Maven](https://maven.apache.org/) installed.
 
-When you have one go to the project's _root folder_ and execute the following command:
+When you have one go to the project's `root folder` and execute the following command:
 
 ```console
 mvn verify
